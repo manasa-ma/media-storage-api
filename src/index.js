@@ -12,6 +12,11 @@ app.use('/api/trash', require('./routes/trashRoutes')); // NEW
 app.use('/api/starred', require('./routes/starredRoutes'));
 app.use('/api/shares', require('./routes/shareRoutes'));
 
-app.listen(5000, () => console.log('✅ Backend: http://localhost:5000'));
+//app.listen(5000, () => console.log('✅ Backend: http://localhost:5000'));
+const PORT = process.env.PORT || 5000;
+// We keep this so it still works locally
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
 module.exports = app; // Add this for Vercel
